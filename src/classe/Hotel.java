@@ -7,24 +7,25 @@ public class Hotel {
     private String nom;
     private String adresse;
     private String region;
-    private ArrayList<Chambre> chambres = new ArrayList<Chambre>();
+    private ArrayList<Chambre> chambres;
     private ArrayList<Client> clients = new ArrayList<Client>();
     private ArrayList<Reservation> reservations = new ArrayList<Reservation>();
     public Hotel(String nom, String adresse, String region) {
         this.nom = nom;
         this.adresse = adresse;
         this.region = region;
+        this.chambres = new ArrayList<Chambre>();
     }
 
     public void ajouterChambre(Chambre nouvelleChambre){
         this.chambres.add(nouvelleChambre);
     }
     public void afficherChambresDisponibles(){
-        for (int i = 0;i < chambres.size();i++){
-            if (chambres.get(i).getDispo()){
-                System.out.println("Chambre dispo : "+chambres.get(i).getNumeroChambre());
-                System.out.println("Chambre dispo : "+chambres.get(i).getType());
-                System.out.println("Chambre dispo : "+chambres.get(i).getDispo());
+        for (Chambre chambre : chambres){
+            if (chambre.getDispo()){
+                System.out.println("Chambre dispo : "+chambre.getNumeroChambre());
+                System.out.println("Chambre dispo : "+chambre.getType());
+                System.out.println("Chambre dispo : "+chambre.getDispo());
             }
         }
     }
