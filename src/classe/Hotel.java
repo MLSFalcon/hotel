@@ -25,11 +25,11 @@ public class Hotel {
         }
     }
     public void afficherChambresDisponibles(){
-        for (Chambre chambre : chambres){
+        for (Chambre chambre : this.chambres){
             if (chambre.getDispo()){
-                System.out.println("Chambre dispo : "+chambre.getNumeroChambre());
-                System.out.println("Chambre dispo : "+chambre.getType());
-                System.out.println("Chambre dispo : "+chambre.getDispo());
+                System.out.println("Chambre : "+chambre.getNumeroChambre());
+                System.out.println("type : "+chambre.getType());
+                System.out.println("Est disponible : "+chambre.getDispo());
             }
         }
     }
@@ -39,21 +39,22 @@ public class Hotel {
         chambre.setDispo(false);
     }
     public void afficherReservations(){
-        for (Reservation reservation : reservations) {
+        for (Reservation reservation : this.reservations) {
             System.out.println("Reservation: "+reservation.getClient().getNom()+" - "+reservation.getChambre().getNumeroChambre()+" - "+reservation.getDebut()+" - "+reservation.getFin());
         }
     }
     public void changerAffectation(Client client,Chambre chambre,Chambre chambre2){
         chambre.setDispo(true);
-        for (Reservation reservation : reservations){
+        for (Reservation reservation : this.reservations){
             if (reservation.getClient().equals(client) && reservation.getChambre().equals(chambre)){
                 reservation.setChambre(chambre2);
+                chambre2.setDispo(false);
             }
         }
     }
     public void supressionReservation(Client client, Chambre chambre){
         chambre.setDispo(true);
-        for (Reservation reservation : reservations){
+        for (Reservation reservation : this.reservations){
             if (reservation.getClient().equals(client) && reservation.getChambre().equals(chambre)){
                 reservations.remove(reservation);
             }
