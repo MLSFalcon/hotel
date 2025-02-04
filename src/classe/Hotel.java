@@ -8,17 +8,21 @@ public class Hotel {
     private String adresse;
     private String region;
     private ArrayList<Chambre> chambres;
-    private ArrayList<Client> clients = new ArrayList<Client>();
-    private ArrayList<Reservation> reservations = new ArrayList<Reservation>();
+    private ArrayList<Client> clients ;
+    private ArrayList<Reservation> reservations;
     public Hotel(String nom, String adresse, String region) {
         this.nom = nom;
         this.adresse = adresse;
         this.region = region;
         this.chambres = new ArrayList<Chambre>();
+        this.clients = new ArrayList<Client>();
+        this.reservations = new ArrayList<Reservation>();
     }
 
     public void ajouterChambre(Chambre nouvelleChambre){
-        this.chambres.add(nouvelleChambre);
+        if (!this.chambres.contains(nouvelleChambre)) {
+            this.chambres.add(nouvelleChambre);
+        }
     }
     public void afficherChambresDisponibles(){
         for (Chambre chambre : chambres){
